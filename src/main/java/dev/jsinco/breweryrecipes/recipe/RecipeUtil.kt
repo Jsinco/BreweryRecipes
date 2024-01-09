@@ -1,4 +1,6 @@
-package dev.jsinco.breweryrecipes
+package dev.jsinco.breweryrecipes.recipe
+
+import dev.jsinco.breweryrecipes.BreweryConfig
 
 class RecipeUtil {
 
@@ -13,10 +15,12 @@ class RecipeUtil {
                 ingredientsMap[ingredientRaw.substringBefore("/")] = ingredientRaw.substringAfter("/").toInt()
             }
 
-            recipes.add(Recipe(configurationSection.getString("$recipe.name") ?: "Unnamed recipe",
+            recipes.add(
+                Recipe(configurationSection.getString("$recipe.name") ?: "Unnamed recipe",
                 configurationSection.getInt("$recipe.cookingtime"),
                 configurationSection.getInt("$recipe.difficulty"),
-                ingredientsMap))
+                ingredientsMap)
+            )
         }
         return recipes
     }

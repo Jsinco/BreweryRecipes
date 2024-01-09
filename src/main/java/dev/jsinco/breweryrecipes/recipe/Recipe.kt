@@ -1,4 +1,4 @@
-package dev.jsinco.breweryrecipes
+package dev.jsinco.breweryrecipes.recipe
 
 import org.bukkit.Difficulty
 
