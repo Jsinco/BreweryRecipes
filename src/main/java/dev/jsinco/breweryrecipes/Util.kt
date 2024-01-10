@@ -4,11 +4,7 @@ import org.bukkit.ChatColor
 
 object Util {
 
-    lateinit var prefix: String
-
-    fun loadUtils() {
-        prefix = colorcode(BreweryRecipes.getInstance().config.getString("prefix")!!)
-    }
+    val prefix: String = colorcode(BreweryRecipes.getInstance().config.getString("prefix") ?: "")
 
     private const val WITH_DELIMITER = "((?<=%1\$s)|(?=%1\$s))"
 

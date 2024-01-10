@@ -1,7 +1,7 @@
-# Placeholders: %recipe_name%
+prefix: '&#f498f6&lI&#c990f9&ln&#9d88fc&lf&#7280ff&lo &r&8»&#E2E2E2'
 recipe_item:
   material: PAPER
-  display_name: '%recipe_name%'
+  lore: [ '&7Right-Click to redeem', '&7this recipe!' ]
   glint: true
 
 

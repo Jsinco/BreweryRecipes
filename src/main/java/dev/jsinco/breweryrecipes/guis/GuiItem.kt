@@ -48,7 +48,7 @@ data class GuiItem(
         fun createRecipeGuiItem(recipe: Recipe): ItemStack {
             val item = ItemStack(Material.PAPER)
             val meta = item.itemMeta!!
-            meta.setDisplayName(Util.colorcode("&f${RecipeUtil.parseRecipeName(recipe.name)}"))
+            meta.setDisplayName(Util.colorcode("&#F7FFC9${RecipeUtil.parseRecipeName(recipe.name)} &fRecipe"))
 
             val lore: MutableList<String> = mutableListOf()
             lore.add(Util.colorcode("&fCooking time&7: &#F7FFC9${recipe.cookingTime}m"))

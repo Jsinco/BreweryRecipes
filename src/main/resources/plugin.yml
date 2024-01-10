@@ -2,7 +2,7 @@ name: BreweryRecipes
 version: '${version}'
 main: dev.jsinco.breweryrecipes.BreweryRecipes
 api-version: '1.20'
-softdepend:
+depend:
   - Brewery
 commands:
   breweryrecipes:
