@@ -4,3 +4,7 @@ main: dev.jsinco.breweryrecipes.BreweryRecipes
 api-version: '1.20'
 softdepend:
   - Brewery
+commands:
+  breweryrecipes:
+      description: 'BreweryRecipes command'
+      usage: /<command>

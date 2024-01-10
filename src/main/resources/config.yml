@@ -14,20 +14,24 @@ recipe_item:
 #   glint: true
 #   custom_model_data: -1
 gui:
-  title: 'Recipes'
+  title: '&6&lRecipes'
   size: 54
   items:
-    recipe_slots: [19, 20, 21, 22, 23, 25, 28, 29, 30, 31, 32, 34]
+    total_recipes:
+      material: BOOK
+      slots: [ 49 ]
+      display_name: '&6&lTotal Recipes&7: &e%total_recipes%'
+      glint: true
     next_page:
       material: ARROW
       slots: [53]
       display_name: '&aNext Page'
-      lore: [ '&7Click to go to the next page' ]
+      lore: []
     previous_page:
       material: ARROW
       slots: [45]
       display_name: '&aPrevious Page'
-      lore: [ '&7Click to go to the previous page' ]
+      lore: []
   border_items:
     # Border items
     border1:
@@ -50,5 +54,3 @@ gui:
       material: LILY_PAD
       slots: [ 4, 49 ]
       display_name: '&0'
-
-messages:

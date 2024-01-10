@@ -56,4 +56,19 @@ object Util {
         }
         return array
     }
+
+    @JvmStatic
+    fun itemNameFromMaterial(item: String): String {
+        var name = item.lowercase().replace("_", " ")
+        name = name.substring(0, 1).uppercase() + name.substring(1)
+        for (i in name.indices) {
+            if (name[i] == ' ') {
+                name =
+                    name.substring(0, i) + " " + name[i + 1].toString().uppercase() + name.substring(
+                        i + 2
+                    ) // Capitalize first letter of each word
+            }
+        }
+        return name
+    }
 }
