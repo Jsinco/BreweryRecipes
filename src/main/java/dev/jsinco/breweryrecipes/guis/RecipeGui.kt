@@ -53,7 +53,10 @@ class RecipeGui(player: Player) : InventoryHolder {
 
 
     init {
-        player.openInventory(paginatedGui.getPage(0))
+
+    }
+    fun openRecipeGui(viewer: Player) {
+        viewer.openInventory(paginatedGui.getPage(0))
     }
 
 

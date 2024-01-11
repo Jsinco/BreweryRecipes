@@ -1,6 +1,7 @@
 package dev.jsinco.breweryrecipes.commands.subcommands;
 
 import dev.jsinco.breweryrecipes.BreweryRecipes;
+import dev.jsinco.breweryrecipes.Util;
 import dev.jsinco.breweryrecipes.commands.SubCommand;
 import dev.jsinco.breweryrecipes.recipe.Recipe;
 import dev.jsinco.breweryrecipes.recipe.RecipeItem;
@@ -16,13 +17,16 @@ import java.util.List;
 public class GiveRecipeItem implements SubCommand {
     @Override
     public void execute(@NotNull BreweryRecipes plugin, @NotNull CommandSender sender, @NotNull String[] args) {
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage("§cOnly players can use this command (Give yourself a specific recipe item)");
+            return;
+        }
 
 
         Recipe recipe = RecipeUtil.getRecipeFromKey(args[1]);
         ItemStack recipeItem = new RecipeItem(recipe).getItem();
 
-        player.getInventory().addItem(recipeItem);
+        Util.giveItem(player, recipeItem);
     }
 
     @Nullable

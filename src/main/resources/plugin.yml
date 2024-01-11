@@ -2,9 +2,10 @@ name: BreweryRecipes
 version: '${version}'
 main: dev.jsinco.breweryrecipes.BreweryRecipes
 api-version: '1.20'
-depend:
-  - Brewery
+author: Jsinco
+depend: [Brewery]
 commands:
   breweryrecipes:
-      description: 'BreweryRecipes command'
-      usage: /<command>
+    description: 'BreweryRecipes command'
+    usage: /<command>[reload] <give|givebook|gui>
+    permission: breweryrecipes.command

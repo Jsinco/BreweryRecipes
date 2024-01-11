@@ -1,7 +1,14 @@
 prefix: '&#f498f6&lI&#c990f9&ln&#9d88fc&lf&#7280ff&lo &r&8»&#E2E2E2'
+
 recipe_item:
   material: PAPER
   lore: [ '&7Right-Click to redeem', '&7this recipe!' ]
+  glint: true
+
+recipe_book_item:
+  material: BOOK
+  display_name: '&6&lRecipe Book'
+  lore: [ '&7Right-Click to open', '&7your recipe book!' ]
   glint: true
 
 
@@ -24,12 +31,12 @@ gui:
       glint: true
     next_page:
       material: ARROW
-      slots: [53]
+      slots: [50]
       display_name: '&aNext Page'
       lore: []
     previous_page:
       material: ARROW
-      slots: [45]
+      slots: [48]
       display_name: '&aPrevious Page'
       lore: []
   border_items:

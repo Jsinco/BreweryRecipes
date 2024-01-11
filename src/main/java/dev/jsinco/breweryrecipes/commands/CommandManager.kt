@@ -1,24 +1,32 @@
 package dev.jsinco.breweryrecipes.commands
 
-
+import dev.jsinco.breweryrecipes.BreweryConfig
 import dev.jsinco.breweryrecipes.BreweryRecipes
+import dev.jsinco.breweryrecipes.Util
+import dev.jsinco.breweryrecipes.commands.subcommands.GiveBook
 import dev.jsinco.breweryrecipes.commands.subcommands.GiveRecipeItem
+import dev.jsinco.breweryrecipes.commands.subcommands.GuiCommand
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
-import org.bukkit.entity.Player
 
 class CommandManager(val plugin: BreweryRecipes) : CommandExecutor, TabCompleter {
 
-    val commands: MutableMap<String, SubCommand> = mutableMapOf()
-
-    init {
-        commands["give"] = GiveRecipeItem()
-    }
+    private val commands: Map<String, SubCommand> = mapOf(
+        "give" to GiveRecipeItem(),
+        "givebook" to GiveBook(),
+        "gui" to GuiCommand()
+    )
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (args.isEmpty()) return false
+        if (args.isEmpty()) {
+            plugin.reloadConfig()
+            Util.reloadPrefix()
+            BreweryConfig.reload()
+            sender.sendMessage("${Util.prefix} Reloaded config.")
+            return true
+        }
 
         val subCommand = commands[args[0]] ?: return false
         subCommand.execute(plugin, sender, args)

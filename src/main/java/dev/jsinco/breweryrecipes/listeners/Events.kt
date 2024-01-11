@@ -1,5 +1,7 @@
-package dev.jsinco.breweryrecipes
+package dev.jsinco.breweryrecipes.listeners
 
+import dev.jsinco.breweryrecipes.BreweryRecipes
+import dev.jsinco.breweryrecipes.Util
 import dev.jsinco.breweryrecipes.guis.GuiItemType
 import dev.jsinco.breweryrecipes.guis.PaginatedGui
 import dev.jsinco.breweryrecipes.guis.RecipeGui
@@ -60,18 +62,22 @@ class Events(private val plugin: BreweryRecipes) : Listener {
         val meta = event.item?.itemMeta ?: return
         val player = event.player
         if (meta.persistentDataContainer.has(NamespacedKey(plugin, "recipe-book"), PersistentDataType.BOOLEAN)) {
-            RecipeGui(player)
+            RecipeGui(player).openRecipeGui(player)
             event.isCancelled = true
             return
         }
 
         val recipeKey: String = meta.persistentDataContainer.get(NamespacedKey(plugin, "recipe-key"), PersistentDataType.STRING) ?: return
+        event.isCancelled = true
 
+        if (player.hasPermission("breweryrecipes.recipe.$recipeKey")) {
+            player.sendMessage(Util.colorcode("${Util.prefix} You already know this recipe!"))
+            return
+        }
 
         player.sendMessage(Util.colorcode("${Util.prefix} You have learned the '${event.item?.itemMeta!!.displayName}&#E2E2E2'!"))
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f)
         event.item!!.amount--
-        event.isCancelled = true
 
         val permissionAttachment: PermissionAttachment = event.player.addAttachment(plugin)
         permissionAttachment.setPermission("breweryrecipes.recipe.$recipeKey", true)

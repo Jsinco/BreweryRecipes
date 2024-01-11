@@ -5,11 +5,10 @@ import org.bukkit.configuration.ConfigurationSection
 import kotlin.random.Random
 
 object RecipeUtil {
-    private val configurationSection: ConfigurationSection = BreweryConfig.get().getConfigurationSection("recipes")!!
 
     fun getAllRecipes(): List<Recipe> {
         val recipes: MutableList<Recipe> = mutableListOf()
-
+        val configurationSection = BreweryConfig.get().getConfigurationSection("recipes") ?: return emptyList()
         for (recipe in configurationSection.getKeys(false)) {
             recipes.add(getRecipeFromKey(recipe))
         }
@@ -24,6 +23,7 @@ object RecipeUtil {
 
     @JvmStatic
     fun getRecipeFromKey(recipe: String): Recipe {
+        val configurationSection: ConfigurationSection = BreweryConfig.get().getConfigurationSection("recipes")!!
         val ingredientsRaw = configurationSection.getStringList("$recipe.ingredients")
         val ingredientsMap: MutableMap<String, Int> = mutableMapOf()
         for (ingredientRaw in ingredientsRaw) {
