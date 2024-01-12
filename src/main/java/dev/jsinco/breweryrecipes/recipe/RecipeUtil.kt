@@ -36,7 +36,7 @@ object RecipeUtil {
             configurationSection.getInt("$recipe.difficulty"),
             configurationSection.getInt("$recipe.cookingtime"),
             configurationSection.getInt("$recipe.distillruns"),
-            if (configurationSection.getInt("$recipe.distilltime") == 0) configurationSection.getInt("$recipe.distilltime") else 40,
+            if (configurationSection.contains("$recipe.distilltime")) configurationSection.getInt("$recipe.distilltime") else 40,
             configurationSection.getInt("$recipe.age"),
             ingredientsMap,
             if (configurationSection.contains("$recipe.rarity_weight")) configurationSection.getInt("$recipe.rarity_weight")
@@ -46,12 +46,7 @@ object RecipeUtil {
 
 
     fun getRandomRecipe(): Recipe {
-        val recipes = getAllRecipes()
-        var selectedRecipe = recipes.random()
-        while (Random.nextInt(11) < selectedRecipe.rarityWeight) {
-            selectedRecipe = recipes.random()
-        }
-        return selectedRecipe
+        return getAllRecipes().random()
     }
 
 

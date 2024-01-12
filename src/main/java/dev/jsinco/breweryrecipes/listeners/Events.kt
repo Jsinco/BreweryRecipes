@@ -19,6 +19,7 @@ import org.bukkit.event.world.LootGenerateEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.permissions.PermissionAttachment
 import org.bukkit.persistence.PersistentDataType
+import kotlin.random.Random
 
 
 class Events(private val plugin: BreweryRecipes) : Listener {
@@ -52,7 +53,7 @@ class Events(private val plugin: BreweryRecipes) : Listener {
 
     @EventHandler
     fun onLootGenerate(event: LootGenerateEvent) {
-        // TODO: add random chance
+        if (Random.nextInt(100) > 45) return
         event.loot.add(RecipeItem(RecipeUtil.getRandomRecipe()).item)
     }
 

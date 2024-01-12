@@ -1,6 +1,7 @@
 package dev.jsinco.breweryrecipes;
 
 import dev.jsinco.breweryrecipes.commands.CommandManager;
+import dev.jsinco.breweryrecipes.breweryeffects.BreweryEffects;
 import dev.jsinco.breweryrecipes.listeners.Events;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,9 +21,12 @@ public final class BreweryRecipes extends JavaPlugin {
         saveDefaultConfig();
         instance = this;
 
-        getServer().getPluginManager().registerEvents(new Events(this), this);
-        getCommand("breweryrecipes").setExecutor(new CommandManager(this));
+        BreweryEffects breweryEffects = new BreweryEffects();
 
+        getServer().getPluginManager().registerEvents(new Events(this), this);
+        getServer().getPluginManager().registerEvents(breweryEffects, this);
+        getCommand("breweryrecipes").setExecutor(new CommandManager(this));
+        getCommand("breweryeffects").setExecutor(breweryEffects);
     }
 
     public static BreweryRecipes getInstance() {

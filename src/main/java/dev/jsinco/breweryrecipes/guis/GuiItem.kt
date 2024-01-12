@@ -51,8 +51,13 @@ data class GuiItem(
             meta.setDisplayName(Util.colorcode("&#F7FFC9${RecipeUtil.parseRecipeName(recipe.name)} &fRecipe"))
 
             val lore: MutableList<String> = mutableListOf()
-            lore.add(Util.colorcode("&fCooking time&7: &#F7FFC9${recipe.cookingTime}m"))
-            lore.addAll(listOf("", Util.colorcode("&fIngredients&7:")))
+            lore.addAll(Util.colorArrayList(listOf(
+                "&fDifficulty&7: &#F7FFC9${recipe.difficulty}",
+                "&fCooking time&7: &#F7FFC9${recipe.cookingTime}m",
+                "&fDistill Runs&7: &#F7FFC9${recipe.distillRuns}",
+                "&fAge&7: &#F7FFC9${recipe.age}yrs &f(Minecraft days)",
+                "", "&fIngredients&7:")
+            ))
             for (ingredient in recipe.ingredients) {
                 lore.add(Util.colorcode(" &#F7FFC9${ingredient.value}x &f${Util.itemNameFromMaterial(RecipeUtil.parseIngredientsName(ingredient.key))}"))
             }

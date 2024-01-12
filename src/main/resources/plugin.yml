@@ -9,3 +9,8 @@ commands:
     description: 'BreweryRecipes command'
     usage: /<command>[reload] <give|givebook|gui>
     permission: breweryrecipes.command
+  breweryeffects:
+    description: 'BreweryEffects command'
+    usage: /<command> <effect> <ticks> <player>
+    permission: breweryrecipes.command.effects
+    aliases: [breweryeffect]
