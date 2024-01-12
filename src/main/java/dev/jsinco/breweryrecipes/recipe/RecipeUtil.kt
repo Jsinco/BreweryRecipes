@@ -30,18 +30,17 @@ object RecipeUtil {
             ingredientsMap[ingredientRaw.substringBefore("/")] = ingredientRaw.substringAfter("/").toInt()
         }
 
-        val rarityWeight = if (configurationSection.contains("$recipe.rarity_weight")) {
-            configurationSection.getInt("$recipe.rarity_weight")
-        } else {
-            configurationSection.getInt("$recipe.difficulty")
-        }
-
         return Recipe(
             recipe,
-            configurationSection.getString("$recipe.name") ?: "Unnamed recipe",
+            configurationSection.getString("$recipe.name") ?: "Unnamed Recipe",
+            configurationSection.getInt("$recipe.difficulty"),
             configurationSection.getInt("$recipe.cookingtime"),
-            rarityWeight,
-            ingredientsMap
+            configurationSection.getInt("$recipe.distillruns"),
+            if (configurationSection.getInt("$recipe.distilltime") == 0) configurationSection.getInt("$recipe.distilltime") else 40,
+            configurationSection.getInt("$recipe.age"),
+            ingredientsMap,
+            if (configurationSection.contains("$recipe.rarity_weight")) configurationSection.getInt("$recipe.rarity_weight")
+            else configurationSection.getInt("$recipe.difficulty")
         )
     }
 
