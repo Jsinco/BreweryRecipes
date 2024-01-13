@@ -1,14 +1,14 @@
-prefix: '&#f498f6&lI&#c990f9&ln&#9d88fc&lf&#7280ff&lo &r&8»&#E2E2E2'
+prefix: '&#f498f6&lB&#de94f8&lr&#c990f9&le&#b38cfb&lw&#9d88fc&le&#8884fe&lr&#7280ff&ly &r&8»&#E2E2E2'
 
 recipe_item:
   material: PAPER
-  lore: [ '&7Right-Click to redeem', '&7this recipe!' ]
+  lore: ['&7Right-Click to redeem', '&7this recipe!']
   glint: true
 
 recipe_book_item:
   material: BOOK
   display_name: '&6&lRecipe Book'
-  lore: [ '&7Right-Click to open', '&7your recipe book!' ]
+  lore: [ '&7Right-Click to open your', '&7recipe book!' ]
   glint: true
 
 
@@ -21,23 +21,23 @@ recipe_book_item:
 #   glint: true
 #   custom_model_data: -1
 gui:
-  title: '&6&lRecipes'
+  title: '&#f670f1&lR&#dd7af6&le&#c584fa&lc&#ac8eff&li&#9c92ff&lp&#8d96ff&le&#7d9aff&ls'
   size: 54
   items:
     total_recipes:
       material: BOOK
-      slots: [ 49 ]
-      display_name: '&6&lTotal Recipes&7: &e%total_recipes%'
+      slots: [49]
+      display_name: '&#f498f6Total Recipes&7: &e%total_recipes%'
       glint: true
     next_page:
       material: ARROW
       slots: [50]
-      display_name: '&aNext Page'
+      display_name: '&#f498f6Next Page'
       lore: []
     previous_page:
       material: ARROW
       slots: [48]
-      display_name: '&aPrevious Page'
+      display_name: '&#f498f6Previous Page'
       lore: []
   border_items:
     # Border items
