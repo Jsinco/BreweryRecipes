@@ -35,6 +35,7 @@ class BreweryEffects : TabExecutor, Listener {
             "ender_ale" to EnderAle(),
             "intellect_infusion" to IntellectInfusion(),
             "lunar_lullaby" to LunarLullaby(),
+            "floral_concoction" to FloralConcoction()
         )
     }
 

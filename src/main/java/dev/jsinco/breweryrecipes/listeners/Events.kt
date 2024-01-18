@@ -7,6 +7,7 @@ import dev.jsinco.breweryrecipes.guis.PaginatedGui
 import dev.jsinco.breweryrecipes.guis.RecipeGui
 import dev.jsinco.breweryrecipes.recipe.RecipeItem
 import dev.jsinco.breweryrecipes.recipe.RecipeUtil
+import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
 import org.bukkit.Sound
 import org.bukkit.entity.Player
@@ -53,7 +54,7 @@ class Events(private val plugin: BreweryRecipes) : Listener {
 
     @EventHandler
     fun onLootGenerate(event: LootGenerateEvent) {
-        if (Random.nextInt(100) > 45) return
+        if (Random.nextInt(100) > 25) return
         event.loot.add(RecipeItem(RecipeUtil.getRandomRecipe()).item)
     }
 
@@ -80,7 +81,6 @@ class Events(private val plugin: BreweryRecipes) : Listener {
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f)
         event.item!!.amount--
 
-        val permissionAttachment: PermissionAttachment = event.player.addAttachment(plugin)
-        permissionAttachment.setPermission("breweryrecipes.recipe.$recipeKey", true)
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set breweryrecipes.recipe.$recipeKey true")
     }
 }
